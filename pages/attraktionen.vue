@@ -1,18 +1,17 @@
 <template>
   <div>
-    <h1>Attraktionen</h1>
     <masonry
       :cols="{ default: 4, 1000: 3, 700: 2, 400: 1 }"
       :gutter="{ default: '30px', 700: '15px' }"
     >
-      <div v-for="(item, index) in items" :key="index" class="item">
-        <img :src="item.image" />
+      <v-card v-for="(item, index) in attractions" :key="index" class="item">
+        <a :href="item.titleUrl"><img :src="item.imageUrl" /></a>
 
         <div class="content">
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.content }}</p>
+          <a :href="item.titleUrl"><h3>{{ item.title }}</h3></a>
+          <p>{{ item.description }}</p>
         </div>
-      </div>
+      </v-card>
     </masonry>
   </div>
 </template>
@@ -22,31 +21,12 @@ export default {
   components: {},
 
   data() {
-    return {
-      items: [
-        {
-          title: 'Max Aicher Arena',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non sagittis leo. Vestibulum sit amet metus nec neque dignissim dapibus.',
-          image:
-            'https://www.max-aicher-arena.de/wp-content/uploads/BAN_Herbst.jpg',
-        },
-        {
-          title: 'Salzbergwerk Berchtesgaden',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id mollis erat. Aliquam erat volutpat. Nunc erat lacus, rhoncus nec.',
-          image:
-            'https://www.salzbergwerk.de/salzbergwerk/blog/content/Wiederer%C3%B6ffnung/image-thumb__2096__ebb_hero-teaser-img/Magischer%20Salzraum.pjpeg',
-        },
-        {
-          title: 'Weißbachschlucht',
-          content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac diam ac ex efficitur posuere. Pellentesque cursus pellentesque risus, non.',
-          image:
-            'https://www.berchtesgaden.de/cdn/uploads/weissbachschlucht-in-schneizlreuth-thmediafilelightbox.jpg',
-        },
-      ],
-    }
+    return {}
+  },
+
+  async asyncData({ $axios }) {
+    const attractions = await $axios.$get('/db/attractions')
+    return { attractions }
   },
 
   methods: {

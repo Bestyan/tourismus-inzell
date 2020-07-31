@@ -55,6 +55,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
   ],
   /*
   ** vuetify module configuration
@@ -82,5 +83,13 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+  },
+
+  server: {
+    port: process.env.PORT || 8000
+  },
+
+  axios: {
+    baseURL: process.env.API_BASE_URL
   }
 }
