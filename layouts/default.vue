@@ -1,10 +1,6 @@
 <template>
   <v-app dark>
-    <v-app-bar clipped-left app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
-    </v-app-bar>
-    <nav-drawer :items="items" :clipped="clipped" :drawer="drawer" />
+    <nav-bar />
     <v-main>
       <v-container>
         <nuxt />
@@ -14,36 +10,15 @@
 </template>
 
 <script>
-import NavDrawer from './navigation/NavDrawer.vue'
+import NavBar from './navigation/NavBar.vue'
 
 export default {
   components: {
-    NavDrawer,
+    NavBar,
   },
 
   data() {
     return {
-      items: [
-        {
-          icon: 'mdi-home',
-          title: 'Home',
-          to: '/',
-        },
-        {
-          icon: 'mdi-stadium-variant',
-          title: 'Attraktionen',
-          to: '/attraktionen',
-        },
-        {
-          icon: 'mdi-lock',
-          title: 'Admin',
-          to: '/admin',
-        },
-      ],
-
-      clipped: true,
-      drawer: false,
-      title: "Attraktionen in und um Inzell"
     }
   },
 }
