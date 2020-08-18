@@ -56,6 +56,7 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
   /*
   ** vuetify module configuration
@@ -91,5 +92,28 @@ export default {
 
   axios: {
     baseURL: process.env.API_BASE_URL
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        // Each endpoint is used to make requests using axios. They are basically extending Axios Request Config .
+        endpoints: {
+          login: { url: '/auth/login', method: 'post', propertyName: 'access_token' },
+          logout: false,
+          user: false
+        },
+        // This option can be used to disable all token handling. Useful for Cookie only flows. (Enabled by default)
+        tokenRequired: true,
+        // Authorization header type to be used in axios requests.
+        tokenType: 'bearer',
+        // Set Authorization header for all axios requests
+        globalToken: true,
+        // This option can be used to disable user fetch after login. Useful if the login response already have the user. To manually set the user, use setUser.
+        autoFetchUser: true
+      }
+    },
+    cookie: false,
+    localStorage: false,
   }
 }

@@ -39,6 +39,10 @@ export default {
           title: 'Admin',
           to: '/admin',
         },
+        {
+          title: 'Login',
+          to: '/login',
+        },
       ],
     }
   },

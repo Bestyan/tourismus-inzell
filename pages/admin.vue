@@ -29,6 +29,8 @@ export default {
         .catch(error => console.log(error))
     },
   },
+
+  middleware: 'auth'
 }
 </script>
 

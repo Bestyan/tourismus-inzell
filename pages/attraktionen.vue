@@ -29,16 +29,10 @@ export default {
     return { attractions }
   },
 
-  methods: {
-    /**
-     * I am mocking a API call that load 20 objects at a time.
-     */
-    append() {},
-  },
 }
 </script>
 
-<style>
+<style scoped>
 .item {
   overflow: hidden;
   border-radius: 4px;
