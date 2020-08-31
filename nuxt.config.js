@@ -103,6 +103,17 @@ export default {
           logout: false,
           user: false
         },
+
+        redirect: {
+          // User will be redirected to this path if login is required.
+          login: '/login',
+          // User will be redirected to this path if after logout, current route is protected.
+          logout: '/',
+          // User will be redirect to this path after login. (rewriteRedirects will rewrite this path)
+          home: '/',
+          // User will be redirected to this path by the identity provider after login
+          callback: '/login',
+        },
         // This option can be used to disable all token handling. Useful for Cookie only flows. (Enabled by default)
         tokenRequired: true,
         // Authorization header type to be used in axios requests.
